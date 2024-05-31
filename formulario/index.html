@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripcion</title>
+</head>
+
+<link rel="stylesheet" href="Styles.css">
+
+<body>
+    <h1>Bievenido Cazador</h1>
+     <img src="assets/Gato Hunter gris.png" alt="Grey Cat">
+    <h2>
+        Antes de comenzar la guiabasica del Cazador me gustaria hacerte algunas 
+        preguntas para determinar tu experiencia
+    </h2>
+
+
+
+    <form action="https://formspree.io/f/mleqyrwd"  method="post"  name="formulario">
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre"    id="nombre" minlength="2" maxlength="20" placeholder="Nombre de Cazador">
+
+
+
+    <br><br>
+
+
+    <label for="edad">Edad:</label>
+    <input type="text" name="edad" id="edad" maxlength="3"  placeholder="Edad de Cazador">
+
+
+    <br><br>
+
+    <label for="experiencia">Que tan veterano eres en la saga? </label>
+    <select name="experiencia" id="experiencia">
+        <option value="elegir">Elegir</option>
+        <option value="Amateur">No he jugado ningun juego de la saga.</option>
+        <option value="Novato">Jugue unos cuantos juegos,se lo basico.</option>
+        <option value="Veterano">He jugado varios juegos de la saga,se de que va esto.</option>
+        <option value="Maestro">Puedes llamarme maestro Cazador.</option>
+    </select>
+
+</form>
+<br>
+<p id="Error"></p>
+<a  id="pagina1" href="https://hutersacademy.netlify.app"></a>
+
+<br><br>
+
+<input type="button" id="bt" value="Enviar" onclick="validarDatos()">
+<script src="script.js"></script>
+
+</body>
+</html>
