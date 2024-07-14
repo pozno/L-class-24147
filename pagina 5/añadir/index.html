@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir usuario</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header> 
+        <nav class="nav-bar">
+            <img src="/pagina 5/assets/Gato Hunter gris.png" alt="">
+        </nav>
+    </header>
+
+    <h1>Añadir usuario</h1><br>
+    
+    <form id="formulario" enctype="multipart/form-data" action="/agregar_usuario" method="POST"> 
+        
+        <label for="identifier">ID:</label>
+        <input type="number" id="identifier" name="nombre" required><br>
+        
+        
+        
+        
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="edad">Edad:</label>
+        <input type="text" id="edad" name="edad" required><br>
+
+        <label for="rango">Rango:</label>
+        <input type="number" id="rango" name="rango" required><br>
+
+        <label for="pais">País:</label>
+        <input type="text" id="pais" name="pais" required><br>
+
+        <label for="imagen">Foto:</label>
+        <input type="file" id="imagen" name="imagen" required><br>
+   
+        <button type="submit">Agregar Usuario</button>
+    </form>
+    
+    <div class="contenedor-centrado">
+        <a href="https://iniciodelaapp.netlify.app">Menú de inicio</a>
+    </div>
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+
+            fetch('/agregar_usuario', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Error al agregar usuario');
+                }
+            })
+            .then(data => {
+                alert('Usuario agregado correctamente.');
+                // Limpiar el formulario después de agregar correctamente
+                document.getElementById('identifier').value = "";
+                document.getElementById('nombre').value = "";
+                document.getElementById('edad').value = "";
+                document.getElementById('rango').value = "";
+                document.getElementById('pais').value = "";
+                document.getElementById('imagen').value = "";
+            })
+            .catch(error => {
+                alert('Error al agregar usuario.');
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>

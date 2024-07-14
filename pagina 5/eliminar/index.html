@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eliminar</title>
+</head>
+<body>
+    <header><nav class="navbar"><img src="/pagina 5/assets/Gato Hunter gris.png" alt=""></nav></header>
+
+
+
+
+    <h1>Eliminar usuario del listado</h1>
+
+
+  <table class="tabla-usuarios">
+
+<thead>
+<tr>
+
+<th>id</th>
+<th>name</th>
+<th>edad</th>
+<th>rango</th>
+<th align="right">imagen_url</th>
+<th>pais</th>
+
+
+
+
+</tr>
+
+
+
+</thead>
+<tbody>
+    
+</tbody>
+
+
+
+  </table>
+
+<div class="contenedor-centrado"><a href="https://iniciodelaapp.netlify.app">Menu de inicio</a></div>
+<button type="submit">Guardar Cambios</button>
+                <a href="https://eliminarusuarios.netlify.app">Cancelar</a>
+
+
+
+<script>
+const URL = "http://127.0.0.1:5000/"
+
+function obtenerUsuario() {
+fetch(URL + 'usuarios') 
+
+.then(response => {
+
+
+
+
+if (response.ok) { return response.json(); }
+})
+
+
+
+.then(data => {
+const usuarioTable =
+
+document.getElementById('tabla-usuarios').getElementsByTagName('tbody')[0];
+
+usuarioTable.innerHTML = ''; 
+
+
+
+data.forEach(producto => {
+const row = usuarioTable.insertRow();
+row.innerHTML = `
+<td>${usuario.id}</td>
+<td>${usuario.nombre}</td>
+<td>${usuario.edad}</td>
+<td align="right">${usuario.imagen_url}</td>
+<td><button
+
+onclick="eliminarUsuario('${usuario.id}')">Eliminar</button></td>
+
+`;
+});
+})
+
+
+
+.catch(error => {
+console.log('Error:', error);
+alert('Error al obtener el usuario.');
+});
+}
+
+function eliminarUsuario(id) {
+
+fetch(URL + 'usuarios/${id}', {method: 'DELETE' }).
+
+if (confirm('¿Estás seguro de que quieres eliminar este producto?')) 
+{
+
+fetch(URL + `Usuarios/$id}`, { method: 'DELETE' })
+.then(response => {
+if (response.ok) {
+
+
+
+
+obtenerUsuario(); 
+
+
+alert('se ha eliminado el usuario.');
+}
+})
+
+
+.catch(error => {
+alert(error.message);
+});
+}
+}
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', obtenerUsuario);
+
+
+
+
+</script>
+
+
+    
+    
+</body>
+</html>

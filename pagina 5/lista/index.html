@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de usuarios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header><nav class="nav-bar"></nav><img src="/pagina 5/assets/Gato Hunter gris.png" alt=""></header>
+
+
+<h1>lista de usuarios</h1><br>
+
+<table>
+
+<thead>
+
+<tr>
+<th>id</th>
+<th>nombre</th>
+<th>edad</th>
+<th align="right">rango</th>
+<th >imagen_url</th>
+<th align="right">pais</th>
+
+
+
+
+</tr>
+
+
+
+
+</thead>
+<tbody id="tabladeUsuarios"></tbody>
+
+
+
+</table><br>
+
+<div class="contenedor-centrado"><a href="https://iniciodelaapp.netlify.app">Menu de inicio</a></div>
+
+
+
+<script>
+    const URL = "http://127.0.0.1:5000/"
+    
+   
+    usuarios.
+    fetch(URL + 'usuarios')
+    .then(function (response) {
+    if (response.ok) {
+
+    
+    return response.json();
+    } else {
+    
+    
+   
+    
+    throw new Error('Error al obtener usuario.');
+    }
+    })
+    
+    .then(function (data) {
+    let tablaUsuarios=
+    
+    document.getElementById('tablaUsuarios'); 
+    
+    
+    
+    
+   
+    
+    for (let usuario of data) {
+    let fila = document.createElement('tr');
+    
+     
+    
+    fila.innerHTML = '<td>' + usuario.codigo + '</td>' +
+    '<td>' + usuario.descripcion + '</td>' +
+    '<td align="right">' + usuario.cantidad +
+    
+    '</td>' +
+    
+    '<td align="right">' + usuario.precio + '</td>'
+    
+    +
+    
+    
+    '<td><img src=./static/imagenes/' +  usuario.imagen_url +' alt="Imagen del producto" style="width: 100px;"></td>' + '<td align="right">' + producto.proveedor + '</td>';
+    
+   
+       
+    tablaUsuarios.appendChild(fila);
+    }
+    })
+    
+    .catch(function (error) {
+    // Código para manejar errores
+    alert('Error al obtener los productos.');
+    });
+    </script>
+
+
+
+
+
+
+</body>
+</html>
